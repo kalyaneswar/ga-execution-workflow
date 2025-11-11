@@ -10,7 +10,7 @@ on:
                 description: 'Name of the artifact to download'
                 # required is mandatory for inputs if value is to be passed
                 required: false
-                default: 'dist-files'
+                default: 'dist'
                 type: string
 jobs:
   deploy:
