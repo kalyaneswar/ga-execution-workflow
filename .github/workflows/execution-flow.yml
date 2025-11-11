@@ -78,6 +78,7 @@ jobs:
 
   report:
     if: failure()
+    needs: [lint, test]
     runs-on: ubuntu-latest
     steps:
       - name: output failure message
