@@ -12,12 +12,20 @@ on:
                 required: false
                 default: 'dist'
                 type: string
-        secrets:
-          # define any secrets if needed
-          DEPLOYMENT_TOKEN:
-            required: false
+        # secrets:
+        #   # define any secrets if needed
+        #   DEPLOYMENT_TOKEN:
+        #     required: false
+        outputs:
+          # define outputs if needed
+          result:
+            description: 'Result of the deployment step'
+            value: ${{ jobs.deploy.outputs.outcome }}
+
 jobs:
   deploy:
+    outputs:
+        outcome: ${{ steps.set-results.outputs.step-result }}
     runs-on: ubuntu-latest
     steps:
       - name: Get code
@@ -29,3 +37,6 @@ jobs:
 
       - name: output information
         run: echo "This is a reusable workflow!"
+      - name: Set results output
+        id: set-results
+        run: echo "step-result=success" >> $GITHUB_OUTPUT
