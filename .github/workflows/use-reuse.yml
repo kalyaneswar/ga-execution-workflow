@@ -71,6 +71,8 @@ jobs:
     uses: ./.github/workflows/reusable.yaml  
     with:
       artifact-name: 'dist-files'
+    secrets:
+      DEPLOYMENT_TOKEN: ${{ secrets.DEPLOYMENT_TOKEN }}
   report:
     if: failure()
     needs: [lint, test]
