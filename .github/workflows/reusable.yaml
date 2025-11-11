@@ -1,0 +1,10 @@
+name: Resusable Workflow
+# workflow call trigger is used to make this workflow reusable
+# this workflow can be called from other workflows
+on: workflow_call
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: output information
+        run: echo "This is a reusable workflow!"
