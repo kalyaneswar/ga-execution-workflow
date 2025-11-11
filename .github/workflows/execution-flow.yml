@@ -75,3 +75,14 @@ jobs:
         run: ls
       - name: Deploy
         run: echo "Deploying..."
+
+  report:
+    if: failure()
+    runs-on: ubuntu-latest
+    steps:
+      - name: output failure message
+        run: |
+          echo "One of the previous jobs has failed. Please check the logs above for details."
+          echo "Jobs Summary: {{ github }}"
+
+  
